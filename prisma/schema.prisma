@@ -1,0 +1,260 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  phone        String?
+  passwordHash String
+  role         String   @default("CUSTOMER") // SUPER_ADMIN | MANAGER | STAFF | CUSTOMER
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  customerProfile  CustomerProfile?
+  addresses        Address[]
+  orders           Order[]          @relation("CustomerOrders")
+  createdOrders    Order[]          @relation("StaffCreatedOrders")
+  createdPurchases Purchase[]
+  inventoryLogs    InventoryLog[]
+  wishlist         Wishlist[]
+  savedForLater    SavedForLater[]
+  notifications    Notification[]
+}
+
+model CustomerProfile {
+  id               String  @id @default(uuid())
+  userId           String  @unique
+  user             User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  profileImage     String?
+  defaultAddressId String?
+}
+
+model Address {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fullName    String
+  phone       String
+  addressLine String
+  city        String
+  state       String
+  pincode     String
+  landmark    String?
+  isDefault   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Category {
+  id          String    @id @default(uuid())
+  name        String    @unique
+  slug        String    @unique
+  icon        String?
+  description String?
+  products    Product[]
+}
+
+model Supplier {
+  id                 String     @id @default(uuid())
+  name               String
+  contactPerson      String
+  phone              String
+  email              String
+  address            String
+  gstin              String?
+  outstandingBalance Float      @default(0)
+  createdAt          DateTime   @default(now())
+  products           Product[]
+  purchases          Purchase[]
+}
+
+model Product {
+  id                 String   @id @default(uuid())
+  sku                String   @unique
+  name               String
+  brand              String
+  categoryId         String
+  category           Category @relation(fields: [categoryId], references: [id])
+  description        String
+  purchasePrice      Float
+  sellingPrice       Float
+  discountPrice      Float?
+  gstRate            Float    @default(18.0)
+  currentStock       Int      @default(0)
+  minStock           Int      @default(5)
+  maxStock           Int      @default(100)
+  unit               String   @default("pcs")
+  weight             String?
+  supplierId         String?
+  supplier           Supplier? @relation(fields: [supplierId], references: [id])
+  status             String   @default("ACTIVE") // ACTIVE | DRAFT | HIDDEN | OUT_OF_STOCK
+  imageUrl           String
+  publicStockVisible Boolean  @default(true)
+  rating             Float    @default(4.5)
+  reviewsCount       Int      @default(12)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  purchaseItems  PurchaseItem[]
+  inventoryLogs  InventoryLog[]
+  orderItems     OrderItem[]
+  wishlists      Wishlist[]
+  savedForLaters SavedForLater[]
+  returnRequests ReturnRequest[]
+}
+
+model Purchase {
+  id             String         @id @default(uuid())
+  purchaseNumber String         @unique
+  supplierId     String
+  supplier       Supplier       @relation(fields: [supplierId], references: [id])
+  invoiceNumber  String
+  purchaseDate   DateTime       @default(now())
+  totalAmount    Float
+  paymentStatus  String         @default("PAID") // PAID | PENDING
+  notes          String?
+  createdById    String
+  createdBy      User           @relation(fields: [createdById], references: [id])
+  items          PurchaseItem[]
+  createdAt      DateTime       @default(now())
+}
+
+model PurchaseItem {
+  id         String   @id @default(uuid())
+  purchaseId String
+  purchase   Purchase @relation(fields: [purchaseId], references: [id], onDelete: Cascade)
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id])
+  quantity   Int
+  unitCost   Float
+  gstAmount  Float
+  totalCost  Float
+}
+
+model InventoryLog {
+  id             String   @id @default(uuid())
+  productId      String
+  product        Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  action         String   // PURCHASE | SALE | POS_SALE | ADJUSTMENT | RETURN | DAMAGE
+  quantityChange Int
+  previousStock  Int
+  newStock       Int
+  referenceId    String?
+  notes          String?
+  createdById    String?
+  createdBy      User?    @relation(fields: [createdById], references: [id])
+  createdAt      DateTime @default(now())
+}
+
+model Order {
+  id                  String   @id @default(uuid())
+  orderNumber         String   @unique
+  customerId          String?
+  customer            User?    @relation("CustomerOrders", fields: [customerId], references: [id])
+  orderType           String   @default("ONLINE") // ONLINE | POS
+  orderStatus         String   @default("PENDING") // PENDING | CONFIRMED | PROCESSING | READY | OUT_OF_DELIVERY | DELIVERED | CANCELLED | RETURNED
+  paymentStatus       String   @default("PENDING") // PENDING | PAID | REFUNDED | FAILED
+  paymentMethod       String   @default("UPI") // CASH | UPI | CARD | NET_BANKING
+  subtotal            Float
+  discountTotal       Float    @default(0)
+  gstTotal            Float    @default(0)
+  deliveryFee         Float    @default(0)
+  grandTotal          Float
+  shippingAddressJson String?
+  createdById         String?
+  createdBy           User?    @relation("StaffCreatedOrders", fields: [createdById], references: [id])
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  items          OrderItem[]
+  invoice        Invoice?
+  returnRequests ReturnRequest[]
+}
+
+model OrderItem {
+  id         String   @id @default(uuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id])
+  quantity   Int
+  unitPrice  Float
+  discount   Float    @default(0)
+  gst        Float    @default(0)
+  totalPrice Float
+}
+
+model Invoice {
+  id            String   @id @default(uuid())
+  invoiceNumber String   @unique
+  orderId       String   @unique
+  order         Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  issueDate     DateTime @default(now())
+  notes         String?
+}
+
+model ReturnRequest {
+  id           String   @id @default(uuid())
+  orderId      String
+  order        Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId    String
+  product      Product  @relation(fields: [productId], references: [id])
+  quantity     Int
+  reason       String
+  status       String   @default("PENDING") // PENDING | APPROVED | REJECTED
+  restocked    Boolean  @default(false)
+  refundAmount Float
+  createdAt    DateTime @default(now())
+}
+
+model Wishlist {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+}
+
+model SavedForLater {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      String   @default("SYSTEM")
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model StoreSetting {
+  id                        String  @id @default("default")
+  storeName                 String  @default("SuperMart Retail & Groceries")
+  storeAddress              String  @default("Plot 42, Commercial Complex, Sector 18, Gurugram, HR - 122002")
+  storePhone                String  @default("+91 98765 43210")
+  storeEmail                String  @default("support@supermartretail.in")
+  gstin                     String  @default("07AAAAA0000A1Z5")
+  currency                  String  @default("₹")
+  defaultGst                Float   @default(18.0)
+  lowStockThreshold         Int     @default(5)
+  showExactStockToCustomers Boolean @default(true)
+}
