@@ -18,6 +18,7 @@ import {
   Store,
   LogOut,
   Shield,
+  Sparkles,
 } from 'lucide-react';
 
 export default function AdminSidebar() {
@@ -26,6 +27,7 @@ export default function AdminSidebar() {
 
   const navItems = [
     { label: 'Dashboard', href: '/admin', icon: LayoutDashboard, roles: ['SUPER_ADMIN', 'MANAGER', 'STAFF'] },
+    { label: 'Design Thinking', href: '/admin/design-thinking', icon: Sparkles, roles: ['SUPER_ADMIN', 'MANAGER', 'STAFF'], highlight: true },
     { label: 'POS Billing', href: '/admin/pos', icon: Calculator, roles: ['SUPER_ADMIN', 'MANAGER', 'STAFF'], highlight: true },
     { label: 'Orders', href: '/admin/orders', icon: ShoppingBag, roles: ['SUPER_ADMIN', 'MANAGER', 'STAFF'] },
     { label: 'Products', href: '/admin/products', icon: Package, roles: ['SUPER_ADMIN', 'MANAGER', 'STAFF'] },

@@ -86,6 +86,13 @@ export default function Navbar() {
               <span>Orders</span>
             </Link>
 
+            <Link
+              href="/project-review"
+              className="text-sm font-semibold text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/60 px-2.5 py-1 rounded-lg hover:bg-brand-100 transition border border-brand-200 dark:border-brand-800"
+            >
+              Design Thinking
+            </Link>
+
             {/* Dark Mode Toggle */}
             <button
               onClick={toggleTheme}
