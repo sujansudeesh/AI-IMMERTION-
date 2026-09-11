@@ -10,6 +10,48 @@ A complete, production-quality retail management and e-commerce web application 
 
 ---
 
+## 🎨 Design Thinking & Validation Evidence Directory
+
+To address evaluator feedback and adhere to Stanford d.school Design Thinking standards, all human-centered research, empathy maps, AI divergence audits, and validation protocols are documented in the [`docs/`](./docs/README.md) directory:
+
+| Document | Focus Area | Direct Repository Link |
+|----------|------------|------------------------|
+| **01. Empathy Research** | Context, User Groups, Observation Rules & Interview Templates | [`docs/01-empathy-research.md`](./docs/01-empathy-research.md) |
+| **02. Empathy Maps** | 6-Quadrant Persona Maps (Owner, Cashier, Customer) | [`docs/02-empathy-map.md`](./docs/02-empathy-map.md) |
+| **03. Problem Statement & HMW** | Technical vs Human Problem Contrast & HMW Questions | [`docs/03-design-thinking-problem-statement.md`](./docs/03-design-thinking-problem-statement.md) |
+| **04. AI Interaction Audit** | AI as a Design Thinking Divergence Partner Audit Log | [`docs/04-ai-interaction-audit.md`](./docs/04-ai-interaction-audit.md) |
+| **05. Ideation & Alternatives** | 10 Solution Concepts & Decision Evaluation Matrix | [`docs/05-ideation-process.md`](./docs/05-ideation-process.md) |
+| **06. Prototype Validation** | Standardized 9-Task Test Protocol & Tester Reports | [`docs/06-prototype-validation-report.md`](./docs/06-prototype-validation-report.md) |
+| **07. Feedback Change Log** | Before vs. After Code Iteration Mapping | [`docs/07-feedback-change-log.md`](./docs/07-feedback-change-log.md) |
+| **08. Design Thinking Stage** | Transparent Progress Matrix across all 5 Stages | [`docs/08-design-thinking-stage.md`](./docs/08-design-thinking-stage.md) |
+| **09. Evaluator Response** | Point-by-Point Matrix Addressing All Evaluator Feedback | [`docs/09-evaluator-feedback-response.md`](./docs/09-evaluator-feedback-response.md) |
+| **10. Resubmission Checklist** | Final Audit Checklist Before Regrading | [`docs/10-resubmission-checklist.md`](./docs/10-resubmission-checklist.md) |
+
+---
+
+## 🎯 Human-Centered Problem Statement & "How Might We"
+
+### Human Problem Framing
+- **Store Owner Friction**: Persistent anxiety over unrecorded inventory losses, unknown daily gross profit margins, and unannounced supplier stockouts.
+- **Cashier Friction**: High stress and cognitive fatigue during peak evening rush hours due to manual price lookups, handheld calculator usage, and slow billing queues.
+- **Customer Friction**: Frustration when arriving at the store or calling only to find items are out of stock or orders lack delivery progress updates.
+
+> [!IMPORTANT]
+> **PRIMARY DESIGN THINKING QUESTION (HMW)**  
+> *"How might we help Sri Chamundi Stores reduce billing delays, inventory uncertainty and ordering friction so customers and staff can complete purchases more reliably, quickly and conveniently?"*
+
+---
+
+## ⚠️ Validation Status & Research Integrity Notice
+
+> [!NOTE]
+> **TRANSPARENCY NOTICE FOR EVALUATORS**  
+> To maintain complete research integrity, the repository explicitly distinguishes between **completed technical deliverables** and **framework collection templates**:
+> - 🟢 **Completed**: Working Next.js application, Prisma SQLite schema, POS terminal, atomic stock locking, 10-alternative decision matrix, AI divergence audit, change logs, and evaluator response matrix.
+> - 🟡 **Templates Ready for Real Data**: Empathy interview templates (`docs/01-empathy-research.md`) and Prototype usability testing reports (`docs/06-prototype-validation-report.md`) are fully structured and pending real field participant data input.
+
+---
+
 ## 🌟 Live Demo Login Credentials
 
 | Role | Email | Password | Access Capabilities |
