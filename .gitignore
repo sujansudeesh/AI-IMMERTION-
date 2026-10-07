@@ -2,28 +2,32 @@
 /node_modules
 /.pnp
 .pnp.js
-
 # testing
 /coverage
-
 # next.js
 /.next/
 /out/
-
 # production
 /build
-
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
 # local env files
 .env*.local
 .env
-
+.env.*
+!.env.example
 # vercel
 .vercel
-
 # typescript
 *.tsbuildinfo
+# local databases and private research -- never evidence for public publication
+/prisma/*.db
+/prisma/*.db-*
+/private-research/
+/.review-backups/
+.DS_Store
+
+# Local development output
+dev.log

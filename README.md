@@ -1,166 +1,76 @@
-# 🛒 Sri Chamundi Stores & Tea Stall — Retail Billing, Inventory & Online Ordering Platform
+# Sri Chamundi Stores & Tea Stall
+## Retail billing, inventory and online-ordering prototype
 
-A complete, production-quality retail management and e-commerce web application built for small-to-medium retail stores. It seamlessly combines **Online Shopping**, an **Amazon-Style Customer Account Portal**, **Real-Time Stock Inventory Sync**, an **Ultra-Fast POS Billing Terminal**, **Supplier Purchase Management**, and **CSV/PDF Financial Reports**.
+**Course project:** Project Better Tomorrow  
+**Full project title:** Integrated Retail Store Billing, Real-Time Inventory & Online Ordering Platform  
+**Review revision:** 6 October 2026  
+**Status:** Technical prototype source exists; field research, user validation and current runtime verification remain pending.
 
-![Next.js](https://img.shields.io/badge/Next.js-14.1-black?logo=next.js)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?logo=tailwind-css)
-![Prisma](https://img.shields.io/badge/Prisma_ORM-5.22-2D3748?logo=prisma)
-![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?logo=typescript)
+This project explores whether a shared retail application can reduce billing friction and uncertainty about product availability and order progress for store staff and customers. It combines a customer storefront with staff billing, inventory, purchasing and reporting interfaces.
 
----
+These are design objectives, not measured outcomes. The current evidence does not establish reduced waiting time, improved profit, customer adoption or production readiness.
 
-## 🎨 Design Thinking & Validation Evidence Directory
+## Start with the review evidence
 
-To address evaluator feedback and adhere to Stanford d.school Design Thinking standards, all human-centered research, empathy maps, AI divergence audits, and validation protocols are documented in the [`docs/`](./docs/README.md) directory:
+- [Review 2 report](Review_2_Project_Report.md) — current progress, corrective actions and remaining work.
+- [Original Review 1](Review_1_Project_Report.md) and [later corrections](docs/13-review1-corrections.md) — retained history, not current test certification.
+- [Portal submission text](Review_2_Submission.txt) — an interim progress statement, not a claim of completed validation.
+- [Evidence index](docs/README.md) — research, problem definition, alternatives, AI provenance, tests and review response.
+- [Submission checklist](docs/10-resubmission-checklist.md) — the remaining completion gates.
 
-| Document | Focus Area | Direct Repository Link |
-|----------|------------|------------------------|
-| **01. Empathy Research** | Context, User Groups, Observation Rules & Interview Templates | [`docs/01-empathy-research.md`](./docs/01-empathy-research.md) |
-| **02. Empathy Maps** | 6-Quadrant Persona Maps (Owner, Cashier, Customer) | [`docs/02-empathy-map.md`](./docs/02-empathy-map.md) |
-| **03. Problem Statement & HMW** | Technical vs Human Problem Contrast & HMW Questions | [`docs/03-design-thinking-problem-statement.md`](./docs/03-design-thinking-problem-statement.md) |
-| **04. AI Interaction Audit** | AI as a Design Thinking Divergence Partner Audit Log | [`docs/04-ai-interaction-audit.md`](./docs/04-ai-interaction-audit.md) |
-| **05. Ideation & Alternatives** | 10 Solution Concepts & Decision Evaluation Matrix | [`docs/05-ideation-process.md`](./docs/05-ideation-process.md) |
-| **06. Prototype Validation** | Standardized 9-Task Test Protocol & Tester Reports | [`docs/06-prototype-validation-report.md`](./docs/06-prototype-validation-report.md) |
-| **07. Feedback Change Log** | Before vs. After Code Iteration Mapping | [`docs/07-feedback-change-log.md`](./docs/07-feedback-change-log.md) |
-| **08. Design Thinking Stage** | Transparent Progress Matrix across all 5 Stages | [`docs/08-design-thinking-stage.md`](./docs/08-design-thinking-stage.md) |
-| **09. Evaluator Response** | Point-by-Point Matrix Addressing All Evaluator Feedback | [`docs/09-evaluator-feedback-response.md`](./docs/09-evaluator-feedback-response.md) |
-| **10. Resubmission Checklist** | Final Audit Checklist Before Regrading | [`docs/10-resubmission-checklist.md`](./docs/10-resubmission-checklist.md) |
+The in-app evidence page is `/project-review`; the existing administrative wrapper is `/admin/design-thinking`. Both use `components/DesignThinkingReport.tsx` and the summary record in `data/project-review.json`.
 
----
+## Working design question
 
-## 🎯 Human-Centered Problem Statement & "How Might We"
+> How might we help customers and staff at Sri Chamundi Stores complete purchases with less waiting and less uncertainty about product availability and order progress?
 
-### Human Problem Framing
-- **Store Owner Friction**: Persistent anxiety over unrecorded inventory losses, unknown daily gross profit margins, and unannounced supplier stockouts.
-- **Cashier Friction**: High stress and cognitive fatigue during peak evening rush hours due to manual price lookups, handheld calculator usage, and slow billing queues.
-- **Customer Friction**: Frustration when arriving at the store or calling only to find items are out of stock or orders lack delivery progress updates.
+This question and the role-based user stories are **provisional** until supported or revised by actual interviews and observations. No named persona in this revision is represented as an interviewed participant.
 
-> [!IMPORTANT]
-> **PRIMARY DESIGN THINKING QUESTION (HMW)**  
-> *"How might we help Sri Chamundi Stores reduce billing delays, inventory uncertainty and ordering friction so customers and staff can complete purchases more reliably, quickly and conveniently?"*
+## What the source contains
 
----
+| Area | Source reference | Evidence boundary |
+|---|---|---|
+| Customer storefront | `app/page.tsx`, customer product/cart/checkout pages | Source implementation; not proof of successful customer use. |
+| Staff point of sale | `app/admin/pos/page.tsx` | Billing interface; speed and scanner compatibility need testing. |
+| Stock handling | `lib/stock.ts`, inventory routes | Transactional check/update/log helper; end-to-end race safety has not been established. |
+| Purchasing and reports | `app/admin/purchases/page.tsx`, `app/admin/reports/page.tsx` | Prototype workflows; calculations, authorization and exports need verification. |
+| Data model | `prisma/schema.prisma` | 17 Prisma models using SQLite; demo data is not real operating evidence. |
+| Authentication | `lib/auth.ts`, authentication routes | JWT implementation; not a security certification. |
 
-## ⚠️ Validation Status & Research Integrity Notice
+The baseline `package.json` specifies Next.js 14.1.0, React 18 and Prisma 5.x dependencies. Those are repository specifications, not recommendations of current versions. This revision does not upgrade the runtime dependencies.
 
-> [!NOTE]
-> **TRANSPARENCY NOTICE FOR EVALUATORS**  
-> To maintain complete research integrity, the repository explicitly distinguishes between **completed technical deliverables** and **framework collection templates**:
-> - 🟢 **Completed**: Working Next.js application, Prisma SQLite schema, POS terminal, atomic stock locking, 10-alternative decision matrix, AI divergence audit, change logs, and evaluator response matrix.
-> - 🟡 **Templates Ready for Real Data**: Empathy interview templates (`docs/01-empathy-research.md`) and Prototype usability testing reports (`docs/06-prototype-validation-report.md`) are fully structured and pending real field participant data input.
+## Run locally in an isolated demo environment
 
----
+First inspect the existing project and back up any local database. Use the project's dependency lockfile and your team's supported Node environment.
 
-## 🌟 Live Demo Login Credentials
+```bash
+npm ci
+npx prisma generate
+npm run dev -- --port 3008
+```
 
-| Role | Email | Password | Access Capabilities |
-|------|-------|----------|---------------------|
-| **Super Admin** | `admin@store.com` | `password123` | Full administrative control, profit calculations, store settings, reports |
-| **Store Manager** | `manager@store.com` | `password123` | Product management, inventory stock adjustments, stock-in purchases |
-| **POS Cashier (Staff)** | `staff@store.com` | `password123` | Fast POS billing terminal, order fulfillment, tax invoice generation |
-| **Customer** | `customer@store.com` | `password123` | Online catalogue, cart, multi-step checkout, Amazon-style account profile & live tracking |
+Do not reset or reseed an existing database. A missing database requires a separately prepared synthetic environment. Use the address printed by the development server; the default port is normally 3000 unless configured differently. A `localhost` address is accessible only on the machine serving it and is **not a public evaluator demo**.
 
-*(Quick 1-click login buttons are also available directly on the `/login` page).*
+```bash
+npm run build
+node scripts/check-review-evidence.mjs
+node scripts/check-review-evidence.mjs --submission
+```
 
----
+The review-evidence checker validates the dossier structure and referenced files. `--submission` also exits with a nonzero status while required evidence is absent. Passing a structure check does not authenticate human research or establish that the application works.
 
-## ✨ Key Features & Highlights
+## Demo safety and known limitations
 
-### 1. 🛍️ Customer Storefront & E-Commerce
-- **Responsive Homepage**: Hero banner, category grid, low-stock deal alerts ("Only 3 left!"), and featured FMCG staples.
-- **Physical Store Showcase**: Live photo gallery featuring real storefront views (**Sri Chamundi Stores & Tea Stall**), physical counter, snack display, and tea refreshment stack with full-screen lightbox view.
-- **Product Catalogue (`/products`)**: Debounced search, category filter pills, price range slider, stock availability filter (`In Stock`, `Low Stock`, `Out of Stock`), and sorting options.
-- **Product Details (`/products/[id]`)**: Stock status badges, pricing breakdown (Selling price, Discount price, GST slab), customer reviews, and quantity selectors bounded strictly by live stock.
-- **Shopping Cart (`/cart`)**: Real-time stock boundary enforcement (prevents ordering more units than available), "Save for Later" drawer, and automated GST & delivery calculations.
-- **Multi-Step Checkout (`/checkout`)**: Step 1 Address selection, Step 2 Order Summary, Step 3 Payment architecture (UPI, Credit/Debit Cards, Net Banking, COD), and Step 4 Order Confirmation.
-- **Order Tracking (`/orders/[id]`)**: 6-stage visual timeline tracker (`Placed` → `Confirmed` → `Processing` → `Ready` → `Out for Delivery` → `Delivered`).
-- **Amazon-Style Customer Account (`/profile`)**: Order history list with 1-click **Reorder Items**, address book management, and wishlist.
+Use synthetic customers, addresses and transactions. The existing seed/login flows expose demonstration accounts: do not put those accounts on a public server with real store data. The baseline JWT helper also contains a hard-coded fallback secret. Replace that behavior and configure an unpredictable deployment secret before any public use.
 
-### 2. ⚡ Lightning-Fast POS & Billing Terminal (`/admin/pos`)
-- **Keyboard & SKU Barcode Scanner**: Instant product lookup by SKU or name with auto-cart addition on Enter.
-- **Billing Cart**: Inline quantity adjustments, flat discount application, and automated GST computation.
-- **Payment Processing**: Cash (with Cash Received & Change Due calculator), UPI QR display, and Card processing.
-- **Printable Tax Invoice Modal**: Thermal/A4 tax invoice preview with print trigger (`window.print()`).
-- **Atomic Stock Deduction**: Server-side Prisma transaction deducting stock instantly and writing an audit trail.
+Payment-method choices and a QR display are not evidence of settled gateway payments. Store photographs do not prove stock accuracy or user validation. Printed prototype invoices and financial reports are not certified accounting or tax records. A shared database does not automatically provide live updates to every open browser.
 
-### 3. 📦 Real-Time Inventory & Stock-In Purchases (`/admin/inventory` & `/admin/purchases`)
-- **Master Inventory**: Real-time tracking of SKUs, min/max thresholds, purchase vs selling costs, and stock status badges.
-- **Stock Adjustment Modal**: Adjust stock (+/- quantity) with mandatory audit reasons (`Manual Adjustment`, `Damaged Stock Removal`, `Customer Return`).
-- **Transaction Audit Log**: Complete history of every stock movement (`PURCHASE`, `SALE`, `POS_SALE`, `ADJUSTMENT`, `RETURN`).
-- **Stock-In Purchases (`/admin/purchases`)**: Create supplier purchase orders with itemized unit purchase costs & GST. Submitting a purchase automatically increments inventory stock.
+[Technical verification](docs/11-technical-verification.md) records the release-blocking checks. The stock, authentication, order APIs, dependencies and database schema are not changed by this documentation/review-page correction pack.
 
-### 4. 📊 Admin Dashboard, Reports & Settings (`/admin`)
-- **Dashboard (`/admin`)**: Today's sales KPI cards, total orders, active customer count, interactive 7-day sales trend charts (Recharts), and low-stock warning banners.
-- **Financial & Profit Reports (`/admin/reports`)**:
-  - Sales & Revenue Report.
-  - Product Profitability Report (`Gross Profit = Selling Price - Purchase Cost`).
-  - Inventory Asset Valuation Report.
-  - 1-Click **CSV Export** & Printable PDF reports.
-- **Returns & Restock Management (`/admin/returns`)**: Approve/reject customer return requests with optional automatic restocking.
-- **Store Settings (`/admin/settings`)**: Customize Store Name, Address, GSTIN, Currency, Low Stock Threshold, and Public Stock Visibility toggles.
+## Evidence and privacy
 
----
+Keep original consent forms, contact details, recordings and private store records out of the public repository. Publish only consented, redacted evidence under `docs/evidence/`, using participant codes such as P01. Add record links to `data/project-review.json` after the activities actually occur. See [evidence guidance](docs/evidence/README.md).
 
-## 🛠️ Tech Stack & Architecture
+**Pathway A/B is awaiting confirmation.** Existing code is not proof of prior empathy work or fresh discovery. See [pathway and stage record](docs/08-design-thinking-stage.md).
 
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with Light & Dark mode support
-- **Database & ORM**: [SQLite](https://sqlite.org/) with [Prisma ORM 5](https://www.prisma.io/)
-- **State & Context**: React Context API (`AuthContext`, `CartContext`, `ThemeContext`)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Charts**: [Recharts](https://recharts.org/)
-- **Authentication**: JWT / HTTP-only cookies with `bcryptjs` password hashing
-
----
-
-## 🚀 Quick Start Guide
-
-### Prerequisites
-- **Node.js**: v18.0 or higher
-- **npm** or **yarn** or **pnpm**
-
-### Installation
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/sujansudeesh/AI-IMMERTION-.git
-   cd AI-IMMERTION-
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Set up the Database Schema**:
-   ```bash
-   npx prisma db push
-   ```
-
-4. **Seed Demo Data**:
-   Populate the database with 35+ realistic FMCG products, categories, suppliers, customers, historical orders, and store settings:
-   ```bash
-   npx ts-node -O '{"module": "commonjs"}' prisma/seed.ts
-   ```
-
-5. **Start Development Server**:
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## 🔒 Security & Data Integrity Highlights
-
-- **Server-Side Validation**: All item prices, GST rates, stock availability, and totals are strictly computed on the server.
-- **Atomic Transactions**: Inventory deductions use server-side Prisma transactions (`$transaction`) to eliminate negative stock and race conditions.
-- **Role-Based Access Control (RBAC)**: Sensitive financial metrics (supplier purchase costs, gross profit margins, revenue reports) are hidden from cashier/staff roles and public customers.
-- **Soft Delete**: Deactivated products are marked as `HIDDEN` rather than permanently deleted, preserving past transaction logs.
-
----
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
+The previous README linked an MIT license without a verified accompanying license file. This revision does not grant or change licensing rights; the repository owner should confirm the intended license separately.

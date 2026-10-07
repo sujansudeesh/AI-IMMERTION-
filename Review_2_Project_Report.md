@@ -1,91 +1,66 @@
-# 📋 Review 2 Project Report — Design Thinking & Project Progress Evidence
+# Review 2 — Sri Chamundi Stores & Tea Stall
 
-**Project Title**: Integrated Retail Store Billing, Real-Time Inventory & Online Ordering Platform for Sri Chamundi Stores & Tea Stall  
-**Evaluation Rubric**: RA ALE / Project Better Tomorrow Growth-Card Criteria  
-**Review Milestone**: Review 2 — 35% Project Completion Milestone  
-**Prior Milestone Score**: Review 1 = 30.1 / 35 (86%)  
-**Pathway Designation**: Pathway Confirmation Pending (Initial store context photographs and domain observations established as baseline hypotheses; structured empathy collection forms prepared for 3-participant execution).
+**Project:** Integrated Retail Store Billing, Real-Time Inventory & Online Ordering Platform  
+**Repository:** `sujansudeesh/AI-IMMERTION-`  
+**Revision date:** 6 October 2026  
+**Baseline inspected:** `1070d38646d2f190cfa229eb15e6b103ba45adee`  
+**Milestone label:** Review 2 — 35% project completion, as shown in the supplied portal screenshot.  
+**Current status:** Consistency correction prepared; real-user research, pathway confirmation and full application verification pending.
 
----
+## 1. Existing project and preservation
 
-## 1. Executive Summary & Growth-Card Alignment
+This continues the same Sri Chamundi Stores project. It is not a new application or repository. The existing customer catalogue, cart/checkout, staff POS, inventory, purchasing and reports remain the prototype baseline. The store transaction APIs, dependency files, database/schema and shop photographs are not replaced by this correction package.
 
-This document provides the official Review 2 submission report for **Sri Chamundi Stores & Tea Stall**, directly addressing evaluator feedback from Review 1.
+The original [Review 1 report](Review_1_Project_Report.md) stays unchanged. [Later corrections](docs/13-review1-corrections.md) clarify historical claims without pretending those corrections existed earlier.
 
-### Primary Corrections & Enhancements in Review 2
-1. **Empathize Research Portfolio (`docs/01-empathy-research.md`, `docs/02-empathy-map.md`)**:
-   - Organized initial baseline observations (counter congestion, tea rush, paper ledgers) and 4 store context photographs (`/public/store-gallery/`).
-   - Prepared structured, unfilled collection forms for 3 primary roles: Store Owner, Staff Cashier, and Customer.
-   - Separated verified baseline observations from unvalidated hypotheses.
-2. **Refined Human-Centered Problem Statement (`docs/03-design-thinking-problem-statement.md`)**:
-   - Replaced technical-only ERP/database framing with human problem framing: `person → situation → difficulty → consequence → desired improvement`.
-   - Primary Provisional Design Question:  
-     *"How might we help customers and staff at Sri Chamundi Stores complete purchases with less waiting and less uncertainty about product availability and order progress?"*
-3. **AI Interaction Audit & 5-Alternative Ideation (`docs/04-ai-interaction-audit.md`, `docs/05-ideation-process.md`)**:
-   - Corrected AI Interaction Audit to distinguish retrospective architecture exploration from revision divergence ideation.
-   - Evaluated 5 solution concepts: (1) Paper Logbook, (2) WhatsApp Ordering, (3) Standalone Offline POS, (4) Third-Party Delivery Aggregator, (5) Hybrid Integrated Web POS + Storefront.
-   - Recorded AI prompts and marked human decisions as *Pending Real User Validation*.
-4. **Usability Validation Protocol (`docs/06-prototype-validation-report.md`)**:
-   - Removed fake sample PASS results, invented quotes, and unmeasured percentage claims.
-   - Defined a standardized 9-task usability testing protocol for 3 target participant roles.
-   - Prepared unfilled collection logs marked *User Testing Pending (Collection Forms Ready)*.
-5. **In-App Review Portals (`/project-review` & `/admin/design-thinking`)**:
-   - Updated the interactive review component ([components/DesignThinkingReport.tsx](file:///Users/sujansudeesh/Desktop/loosuuuuuü/components/DesignThinkingReport.tsx)) to present truthful academic status, pathway designation, 5-alternative decision matrix, and collection forms.
+## 2. Human-centred objective
 
----
+The project investigates how customers and staff can complete purchases with understandable information and less repeated work. Waiting, stock uncertainty and unclear order progress are hypotheses to investigate, not confirmed store findings in the absence of supplied interviews.
 
-## 2. Review 1 vs. Review 2 Score & Milestone Correction
+> How might we help customers and staff at Sri Chamundi Stores complete purchases with less waiting and less uncertainty about product availability and order progress?
 
-| Milestone | Score / Status | Status Description |
-|:---|:---|:---|
-| **Review 1 Record** | **30.1 / 35 (86%)** | Prior evaluation score achieved in Review 1. (Preserved as historical baseline). |
-| **Review 2 Status** | **35% Project Completion** | Current growth-card rubric status. Working prototype functional; user testing pending. |
+The [problem definition](docs/03-design-thinking-problem-statement.md) connects possible users, situations, difficulties, consequences and desired improvements. User stories and proposed acceptance criteria remain provisional until supported by evidence.
 
----
+## 3. What this consistency correction changes
 
-## 3. Five Core Growth-Card Improvement Areas
+The earlier partial update changed the review page and report but left several supporting files unchanged. This package corrects the active README, supporting documents and review component together.
 
-### Area 1: Empathize Research Portfolio
-- **Store Photographs**: 4 real physical store photographs in `/public/store-gallery/` establish store environment context (front counter, tea stall setup, grocery shelf storage, manual billing register), explicitly noted as context, not proof of customer frustration.
-- **Collection Forms**: Prepared unfilled collection sheets for Participant 1 (Owner), Participant 2 (Cashier), and Participant 3 (Customer).
+| Area | Correction | Evidence boundary |
+|---|---|---|
+| Empathy | Interview/observation forms, distinct map categories and journey worksheet; no invented quotations or identities. | Actual interviews and observations still absent from the dossier. |
+| Define | One provisional HMW and explicit person/situation/difficulty/consequence framing. | Must be checked against real research. |
+| Ideation | Exactly five consistent alternatives in the JSON, page and written comparison. | New design reasoning, not measured preferences or a final human selection. |
+| AI audit | Unsupported historical dates/prompts removed from the active audit; current assistance documented as a summary. | Original historical exports not recovered; final human decision pending. |
+| Validation | Role-specific study protocol and unfilled real-tester records; feedback/change/retest tracking. | No completed three-person study or measured time saving is claimed. |
+| Pathway | Prior code history shown separately from research; A/B confirmation remains explicit. | Existing code does not prove completed earlier empathy research. |
+| Presentation | Data-driven evidence counts, readable section navigation and print styling. | A component change is not a full-app/browser test or deployment. |
 
-### Area 2: Define Problem Framing
-- **Staff Problem Statement**: Cashiers and owners during peak tea stall rush hours experience stress and billing delays due to manual price lookups and paper registers, leading to queue delays and accidental sale of out-of-stock goods.
-- **Customer Problem Statement**: Local grocery buyers face wasted trips and uncertainty because item stock availability cannot be checked remotely.
+The five options are: paper-based stock and billing checklist; message-based ordering; standalone offline POS; third-party ordering or delivery platform; and integrated web POS and storefront. The integrated option is retained as the existing prototype, not pronounced a user-validated winner.
 
-### Area 3: Ideate with AI & 5 Solution Alternatives
-- **Alternative 1: Paper Logbook** — Lowest cost, high human error, zero online sync (Rejected).
-- **Alternative 2: WhatsApp Ordering** — Low tech barrier, heavy staff manual texting burden (Rejected).
-- **Alternative 3: Standalone Offline POS** — Solves counter billing speed, fails online customer visibility (Partial).
-- **Alternative 4: Third-Party Delivery Aggregator** — High 25-30% commission erases small retail margins (Rejected).
-- **Alternative 5: Integrated Web POS + Real-Time Sync Storefront** — Zero commission, low operational cost, real-time stock sync (Selected).
+## 4. Prototype architecture and verification boundary
 
-### Area 4: Prototype & Usability Testing Protocol
-- Standardized 9-task testing matrix covering customer catalogue search, cart addition, checkout, 6-stage order tracking, POS barcode lookup, discount calculation, invoice printing, stock adjustment, and profit reports.
-- Structured collection logs for 3 real participants (Owner, Cashier, Customer) marked *User Testing Pending*.
+The baseline source uses Next.js/React interfaces, server API routes and Prisma/SQLite. The schema defines 17 models. Source contains a transactional stock-check/update/log helper and staff/customer workflows. These are source observations, not evidence of concurrent checkout safety, successful payment settlement, secure deployment or a passing current build.
 
-### Area 5: Explicit Pathway & Story Stage
-- **Pathway Status**: *Pathway Confirmation Pending*.
-- **4 Pillars**:
-  1. Existing Prototype Work (Next.js 14 POS + Storefront + DB)
-  2. Revision Corrections (Empathy framework, 5-idea matrix, AI audit fix)
-  3. Research Evidence Available (4 Store Photographs)
-  4. Outstanding Human Validation (3-participant user testing sessions & interview data collection)
+This revision adds no store business-functionality changes. It corrects the evaluation portfolio and evidence handling. The [technical plan](docs/11-technical-verification.md) identifies build, authorization, stock, payment-boundary and role-workflow checks required before claiming a verified demonstration.
 
----
+## 5. Research, testers and status
 
-## 4. Repository Documentation File Index
+No real participant identities, interviews, observations or usability results are inserted by this package. The public evidence arrays for those activities remain empty. The current AI-assistance summary is explicitly separate from participant research.
 
-- [`README.md`](./README.md) — Main repository overview with Design Thinking links & live demo accounts.
-- [`docs/README.md`](./docs/README.md) — Central documentation index.
-- [`docs/01-empathy-research.md`](./docs/01-empathy-research.md) — Empathy research framework & interview collection templates.
-- [`docs/02-empathy-map.md`](./docs/02-empathy-map.md) — 6-Quadrant Empathy Maps (Owner, Cashier, Customer).
-- [`docs/03-design-thinking-problem-statement.md`](./docs/03-design-thinking-problem-statement.md) — Refined human problem statement & HMW framework.
-- [`docs/04-ai-interaction-audit.md`](./docs/04-ai-interaction-audit.md) — Corrected AI Interaction Audit.
-- [`docs/05-ideation-process.md`](./docs/05-ideation-process.md) — 5-Alternative solution concepts & decision matrix.
-- [`docs/06-prototype-validation-report.md`](./docs/06-prototype-validation-report.md) — 9-Task usability testing protocol & unfilled 3-person logs.
-- [`docs/07-feedback-change-log.md`](./docs/07-feedback-change-log.md) — Feedback → Evidence → Change → File → Retest log.
-- [`docs/08-design-thinking-stage.md`](./docs/08-design-thinking-stage.md) — Pathway status & 6-stage pipeline matrix.
-- [`docs/09-evaluator-feedback-response.md`](./docs/09-evaluator-feedback-response.md) — Point-by-point growth-card response matrix.
-- [`docs/10-resubmission-checklist.md`](./docs/10-resubmission-checklist.md) — Final resubmission checklist.
-- [`Review_2_Submission.txt`](./Review_2_Submission.txt) — Truthful portal text report.
+Testing should involve at least three distinct real people with appropriate customer, cashier and owner/manager tasks. Record actual dates, version, task outcomes, help given, observed difficulties and genuine feedback. Link decisions and changes to their source feedback and record follow-up outcomes. A software test cannot substitute for a real tester.
+
+## 6. Pathway and chronology
+
+**Pathway A/B confirmation remains pending.** The existing project history is retained. Continuation requires identifying the earlier research being carried forward; fresh discovery requires real new research. Do not backdate a study or select a route simply to make a status badge green.
+
+Review 1 is shown as 30.1/35 (86%) in the user's screenshots. These awarded marks are not a measurement of project completion. The Review 2 milestone heading is reproduced as a label, not upgraded to a 70% or 100% progress claim.
+
+## 7. Evidence directory and next steps
+
+Start at the [evidence index](docs/README.md) and [five-area evaluator response](docs/09-evaluator-feedback-response.md). The [checklist](docs/10-resubmission-checklist.md) keeps human tasks and technical checks distinct from completed documentation changes.
+
+Next: confirm pathway; supply or collect genuine research; revise the problem and choose an intervention from evidence; test with at least three real participants; implement justified changes and record follow-up results; run application checks; supply a controlled demo or redacted recording.
+
+## 8. Publication status
+
+This correction was prepared in a delivery package after the GitHub connection returned HTTP 403 for a write attempt. It is **not a successfully published GitHub revision** until an authorized editor applies, commits and pushes it. Add the real correction commit after that succeeds. Localhost links are not public demo links, and no college submission is performed by this package.

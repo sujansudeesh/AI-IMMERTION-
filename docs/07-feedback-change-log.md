@@ -1,46 +1,28 @@
-# 07 — Feedback Change Log (Before vs. After Iteration)
+# 07 — Corrections, feedback and retests
 
-**Project**: Integrated Retail Store Billing, Real-Time Inventory & Online Ordering Platform  
-**Target Entity**: Sri Chamundi Stores & Tea Stall  
-**Design Thinking Stage**: Stage 5 — TEST & ITERATE
+## A. Documentation/review-page corrections in this pack
 
----
+These actions respond to inconsistent reporting and evaluator feedback. They are **not** changes validated by store users.
 
-## 1. Overview & Iteration Principle
+| ID | Issue in earlier material | Correction prepared | Verification boundary |
+|---|---|---|---|
+| DOC-01 | Named personas and apparent direct speech without participant records. | Replaced with anonymous role hypotheses and evidence slots. | Text reviewed; no interview claimed. |
+| DOC-02 | Reconstructed AI logs presented with exact historical dates. | Removed unsupported dates and added provenance categories. | No original historical transcript recovered. |
+| DOC-03 | Sample test rows showed PASS and 100% retest results. | Review page now derives counts from actual participant/test record arrays, currently empty. | No participant result claimed. |
+| DOC-04 | A 90% time saving and “Verified” user changes lacked supporting measurements. | Removed impact guarantees and separated current features from feedback-driven change. | Performance not measured. |
+| DOC-05 | Docs, app and grade/progress labels contradicted one another. | Aligned pending states; used supplied screenshot score and left milestone/pathway confirmation open. | Does not change the college record. |
+| DOC-07 | Written ten-option matrix contradicted the new five-option page. | All active comparisons now use one five-option set, with no unverified numerical scoring. | No final human choice or user preference claimed. |
+| DOC-08 | Original Review 1 history could be mistaken for current verification. | Preserve it unchanged and add a separately dated correction note. | Does not rewrite prior history. |
+| DOC-06 | Printing showed only a selected tab and evidence content was duplicated. | Prepared an accessible section-based page with print layout and a shared summary JSON. | Syntax can be checked locally; full app/browser test pending. |
 
-A core principle of Design Thinking is **Human-Centered Iteration**: taking feedback directly from real users during testing and making concrete UI, workflow, or architectural adjustments to eliminate friction.
+## B. Genuine user-feedback iterations
 
-This change log maps specific user feedback to code changes, showing the **Old Design**, **Change Made**, **Reasoning**, **New Design**, and **Retest Result**.
+**No completed user-driven iteration or retest is evidenced in this corrected dossier.** Existing feature code does not show who requested it, whether the request preceded implementation, or whether the change helped.
 
----
+Complete one row per actual issue:
 
-## 2. Validation Change Log Table
+| Change ID | Source session/observation and date | Difficulty/quote | Decision and reason | Code commit/build | Before/after evidence | Retest session and outcome |
+|---|---|---|---|---|---|---|
+| Pending | None recorded. | None recorded. | Not assessed. | None recorded. | None recorded. | Not run. |
 
-| Issue # | Reported By | User Evidence / Observation | Old Design (Pre-Validation) | Change Implemented in Code | Rationale & Design Goal | New Design (Post-Validation) | Retest Status |
-|---------|-------------|----------------------------|-----------------------------|----------------------------|-------------------------|----------------------------|---------------|
-| **CHG-01** | Cashier / Staff | Cashier found it hard to see exact change due when customers gave custom cash notes (e.g., ₹500 for a ₹235 bill). | Generic total display without cash change calculation box. | Added an interactive **Cash Change Calculator** inside the POS terminal payment drawer (`app/admin/pos/page.tsx`). | Eliminates manual mental arithmetic during evening rush hours; prevents cashier drawer shortfalls. | Real-time `Change Due` display in bold emerald text whenever cash received is entered. | **Verified** |
-| **CHG-02** | Customer | Customer wanted to verify if online listed stock matched what was physically on store shelves. | Text-only product listings without physical store visual evidence. | Integrated a **Physical Store Photo Showcase** (`app/page.tsx`) with 4 real photographs of Sri Chamundi Stores. | Establishes immediate trust for highway commuters and local buyers that the store is real and operating. | Interactive 4-photo gallery with full-screen lightbox modal. | **Verified** |
-| **CHG-03** | Customer | Customer wanted to re-order weekly staple groceries without re-selecting individual items from scratch. | Order history only showed order status without re-ordering capability. | Added a **1-Click 'Reorder Items' Button** in Customer Profile (`app/profile/page.tsx`). | Saves 90% of checkout time for returning household buyers. | 1-Click button that automatically populates the cart with past order items and redirects to cart. | **Verified** |
-| **CHG-04** | Store Owner | Owner was concerned about selling out high-demand items (milk, tea dust, butter) without early warning. | System only flagged out-of-stock items (`0 stock`). | Added a **Low Stock Threshold Alert Engine** (`currentStock <= minStock`), firing admin notifications. | Gives the owner early warning to issue supplier purchase orders before stock hits zero. | Prominent Amber Alert banner on Admin Dashboard & Inventory pages (`Only 3 left!`). | **Verified** |
-| **CHG-05** | Customer | Customer wanted to know exact delivery stage without calling store staff. | Order details showed basic text status (`Pending`). | Built a **6-Stage Visual Timeline Tracker** (`app/orders/[id]`) with milestone indicators. | Reduces incoming store phone calls by giving customers live visual progress. | Step timeline (`Placed` → `Confirmed` → `Processing` → `Ready` → `Out for Delivery` → `Delivered`). | **Verified** |
-| **CHG-06** | Store Owner | Owner needed to export profit reports for tax accountants in spreadsheet format. | Web-only analytics tables without file export options. | Implemented a **1-Click CSV Report Exporter** (`/api/admin/reports?export=true`). | Allows the owner to download sales, profitability, and inventory valuation data for external accounting. | Green `Export as CSV` button triggering instant file download. | **Verified** |
-
----
-
-## 3. Screenshot Reference Template for Visual Evidence
-
-> [!NOTE]
-> **VISUAL PROOF REQUIREMENTS**  
-> To provide undeniable evidence to evaluators, team members must capture side-by-side screenshots of the interface before and after user feedback iterations.
-
-### Example Screenshot Reference Format:
-
-#### Iteration CHG-01: POS Cash Payment Change Calculator
-- **Before Screenshot**: `docs/screenshots/chg-01-before.png` *(Simple total price display without change calculator)*
-- **After Screenshot**: `docs/screenshots/chg-01-after.png` *(Updated POS terminal with Cash Received & Change Due calculator box)*
-- **User Impact**: Cashier processing speed increased; zero mental arithmetic required.
-
-#### Iteration CHG-02: Physical Store Showcase Gallery
-- **Before Screenshot**: `docs/screenshots/chg-02-before.png` *(Generic e-commerce homepage)*
-- **After Screenshot**: `docs/screenshots/chg-02-after.png` *(Homepage featuring 4 real store photos of Sri Chamundi Stores)*
-- **User Impact**: Verified visual trust for online buyers.
+Record “no change” with a reason where feedback is not adopted. A retest can fail or reveal a different problem; report that result. Reconstructed earlier history must be labelled as such and cannot be used as an exact before/after sequence without evidence.

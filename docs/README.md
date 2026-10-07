@@ -1,38 +1,37 @@
-# 📚 Design Thinking & Validation Documentation Index
+# Review evidence index
 
-**Project**: Integrated Retail Store Billing, Real-Time Inventory & Online Ordering Platform  
-**Target Entity**: Sri Chamundi Stores & Tea Stall  
-**Milestone**: Review 2 — 35% Project Completion Milestone  
-**Prior Score**: Review 1 = 30.1 / 35 (86%)  
-**Pathway Designation**: Pathway Confirmation Pending (Initial store context photographs and domain observations established as baseline hypotheses; structured empathy collection forms prepared for 3-participant execution).  
-**Repository**: [https://github.com/sujansudeesh/AI-IMMERTION-](https://github.com/sujansudeesh/AI-IMMERTION-)
+**Sri Chamundi Stores & Tea Stall · revised 6 October 2026**
 
----
+Start with [Review 2](../Review_2_Project_Report.md). The dossier currently contains prepared research instruments and design reasoning, not completed fieldwork. A green documentation label must not be read as completed user validation.
 
-Welcome to the central Design Thinking & Validation documentation index for **Sri Chamundi Stores & Tea Stall**. This folder contains all human-centered research, empathy mapping, problem definitions, AI divergence audits, ideation matrices, prototype testing protocols, and evaluator response evidence.
+| Document | Purpose | Evidence status |
+|---|---|---|
+| [01 — Empathy research](01-empathy-research.md) | Recruitment, interviews and observation records | Protocol ready; records pending. |
+| [02 — Empathy maps](02-empathy-map.md) | Role-based evidence synthesis | Hypotheses only. |
+| [03 — Problem and user stories](03-design-thinking-problem-statement.md) | HMW, provisional POV and acceptance criteria | Awaiting research support. |
+| [04 — AI audit](04-ai-interaction-audit.md) | Original vs reconstructed vs current AI work | Current assistance summary; historical provenance unverified. |
+| [05 — Alternatives](05-ideation-process.md) | Five-option current comparison | Design reasoning, not a user-rated selection. |
+| [06 — Validation](06-prototype-validation-report.md) | Role-specific tasks and outcome forms | No completed tester records. |
+| [07 — Changes and retests](07-feedback-change-log.md) | Trace feedback to implementation and retest | Documentation corrections recorded; user iterations pending. |
+| [08 — Pathway and stage](08-design-thinking-stage.md) | A/B decision and actual stage status | Pathway unconfirmed. |
+| [09 — Evaluator response](09-evaluator-feedback-response.md) | Feedback-to-evidence mapping | Partly addressed; field evidence still open. |
+| [10 — Checklist](10-resubmission-checklist.md) | Submission gates | Not ready for a completed-validation claim. |
+| [11 — Technical verification](11-technical-verification.md) | Runtime checks and deployment limitations | Full application checks pending. |
+| [12 — Journey map](12-user-journey-map.md) | Connect actions, difficulties and opportunities | Worksheet awaiting observations. |
+| [13 — Historical Review 1 corrections](13-review1-corrections.md) | Preserve original submission and distinguish later corrections | Historical file not overwritten. |
+| [Evidence folder](evidence/README.md) | Safe record naming and provenance | Redacted records to be added. |
 
----
+## Status definitions
 
-## 📑 Documentation Navigation Directory
+**Source inspected** means a file or implementation was read. **Draft/hypothesis** means an idea awaits evidence. **Protocol ready** means a collection method exists. **Recorded evidence** means an actual dated activity has a traceable record. **Verified result** requires an identifiable test, expected outcome, actual outcome and evidence; it is not a synonym for an attractive interface.
 
-| File Name | Title & Focus Area | Description | Status |
-|-----------|--------------------|-------------|--------|
-| [`01-empathy-research.md`](./01-empathy-research.md) | **Empathy Research & Observation Framework** | Context of Sri Chamundi Stores, 4 store photos, user groups, observation methodology, and structured collection templates. | 🟡 Framework & Collection Templates Ready |
-| [`02-empathy-map.md`](./02-empathy-map.md) | **User Empathy Maps** | Detailed 6-quadrant empathy maps (`Says`, `Thinks`, `Does`, `Feels`, `Pains`, `Gains`) for Owner, Cashier, and Customer. | 🟢 Baseline Maps & Collection Forms Ready |
-| [`03-design-thinking-problem-statement.md`](./03-design-thinking-problem-statement.md) | **Human-Centered Problem Statement & HMW** | Technical vs Human problem contrast, refined problem format (`person → situation → difficulty → consequence`), and provisional design question. | 🟢 Complete |
-| [`04-ai-interaction-audit.md`](./04-ai-interaction-audit.md) | **AI Interaction & Ideation Audit Trail** | Corrected log showing AI as a **Design Thinking Divergence Partner**, distinguishing retrospective summaries from revision ideation. | 🟢 Complete (Human Approval Pending User Testing) |
-| [`05-ideation-process.md`](./05-ideation-process.md) | **Ideation & Alternative Solutions Matrix** | Divergent exploration of 5 solution concepts (paper log, WhatsApp, offline POS, aggregator, Web POS) evaluated on decision matrix. | 🟢 Complete |
-| [`06-prototype-validation-report.md`](./06-prototype-validation-report.md) | **Prototype & Usability Validation Framework** | Standardized 9-Task Usability Test Protocol and unfilled evaluation report logs for 3 real participants. | 🟡 User Testing Pending (Collection Forms Ready) |
-| [`07-feedback-change-log.md`](./07-feedback-change-log.md) | **Feedback Change Log (Before vs. After)** | Mapping user friction points to concrete code changes, design rationale, and retest results. | 🟢 Complete |
-| [`08-design-thinking-stage.md`](./08-design-thinking-stage.md) | **Design Thinking Stage & Progress Status** | Transparent matrix detailing current progress across 6 stages and 4 pillars. | 🟢 Complete |
-| [`09-evaluator-feedback-response.md`](./09-evaluator-feedback-response.md) | **Evaluator Feedback Response & Audit Matrix** | Point-by-point audit table addressing all 5 growth-card improvement areas with direct repository links. | 🟢 Complete |
-| [`10-resubmission-checklist.md`](./10-resubmission-checklist.md) | **Resubmission Readiness Checklist** | Final audit checklist tracking required real-user inputs before formal regrading. | 🟡 Action Required (Field Data Pending) |
+## Keeping the website and report consistent
 
----
+The review page reads `data/project-review.json`. Add only real, redacted evidence records to its arrays after completing the activities. The markdown documents provide context and detailed forms; they do not automatically populate the website. Update both the evidence record and its linked summary, then run:
 
-## 🎯 Quick Links to Key Evidence
+```bash
+node scripts/check-review-evidence.mjs
+node scripts/check-review-evidence.mjs --submission
+```
 
-- **Primary Provisional Design Question**: [`03-design-thinking-problem-statement.md#3-provisional-design-question-how-might-we`](./03-design-thinking-problem-statement.md#3-provisional-design-question-how-might-we)
-- **5 Solution Concepts Decision Matrix**: [`05-ideation-process.md#3-decision--evaluation-matrix`](./05-ideation-process.md#3-decision--evaluation-matrix)
-- **Point-by-Point Response to Growth-Card Evaluator**: [`09-evaluator-feedback-response.md`](./09-evaluator-feedback-response.md)
-- **Review 2 Submission Report**: [`../Review_2_Project_Report.md`](../Review_2_Project_Report.md)
+The checker reports missing evidence and broken local record links. It cannot decide whether an interview truly occurred or whether the report meets the coordinator's full rubric.

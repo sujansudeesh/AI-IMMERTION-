@@ -1,118 +1,60 @@
-# 06 — Prototype & Usability Validation Framework
+# 06 — Prototype validation protocol and results record
 
-**Project**: Integrated Retail Store Billing, Real-Time Inventory & Online Ordering Platform  
-**Target Entity**: Sri Chamundi Stores & Tea Stall  
-**Design Thinking Stage**: Stage 5 — TEST  
-**Status**: Usability Testing Framework & Standardized Test Protocols Created — *Pending Execution With 3 Real Testers*
+**Status: protocol prepared; no completed real-user tests recorded in this dossier.**
 
----
+The assignment requires feedback from at least three real testers. Covering customer, cashier and owner/manager is the proposed study design; it is not evidence of recruitment or completed testing. A participant may take part in both discovery and prototype testing, but record the activities separately.
 
-## 1. Overview & Evaluation Guidelines
+## Study setup
 
-> [!IMPORTANT]
-> **RESEARCH INTEGRITY & ETHICAL DISCLOSURE**  
-> To guarantee complete academic and professional honesty, this document defines the **Standardized Usability Testing Protocol**. The tester evaluation logs below contain illustrative structural guidelines and explicitly marked example templates. They must be replaced with recorded observations from 3 real human testers prior to final project submission.
+Use a disposable demo database and a known build/commit. Record actual date, role, device, browser, session duration, moderator and consent. Explain that the prototype, not the person, is being tested. Do not use real payments. Avoid coaching until a participant is stuck; record every hint and classify the result as assisted when applicable.
 
----
+## Role-specific tasks
 
-## 2. Standardized Usability Task Protocol (9 Tasks)
+| Task | Role | Scenario | Expected observable behavior (not a measured result) |
+|---|---|---|---|
+| T01 | Customer | Find a specified demo product. | Finds the intended product and reads availability. |
+| T02 | Customer | Add two units, then attempt an unavailable quantity. | Understands the cart; overselling is rejected without a false success state. |
+| T03 | Customer | Complete a demo order using the available simulated flow. | Reaches an order confirmation and understands that payment is not real settlement. |
+| T04 | Customer | Find the order's current stage. | Locates their own order and explains the next action. |
+| T05 | Cashier | Find an item by its configured identifier. | Correct product is added; unknown identifier is handled clearly. |
+| T06 | Cashier | Change quantity and calculate cash change on a demo bill. | Displayed total and change match the chosen test inputs. |
+| T07 | Cashier | Complete the demo sale and open invoice print preview. | Order/stock behavior is observed; printable content is legible. |
+| T08 | Owner/manager | Identify low stock and record a permitted adjustment. | Correct item is identified; reason and stock log are recorded. |
+| T09 | Owner/manager | Inspect and export the available sales/report data. | Explains the report's meaning and opens the exported file. |
 
-Each tester is evaluated against 9 core operational tasks representing key customer, cashier, and manager workflows:
+Do not ask a customer to execute staff tasks. Do not treat missing scanner hardware as a tested barcode integration. The actual tracker is opened from a real demo order, not an invented `/orders` listing page.
 
-| Task ID | Workflow Category | Task Description | Target Success Metric |
-|---------|-------------------|------------------|-----------------------|
-| **Task 1** | Customer / E-Commerce | Search for a product (e.g., *"Atta"* or *"Red Label Tea"*) using the catalogue search bar. | Completed in < 10 seconds |
-| **Task 2** | Customer / E-Commerce | Add 2 units of an item to the shopping cart while verifying stock boundary warnings. | Completed without stock error |
-| **Task 3** | Customer / E-Commerce | Complete the 4-step online checkout (Address → Summary → Payment Selection → Confirmation). | Completed in < 45 seconds |
-| **Task 4** | Customer / E-Commerce | Locate the placed order and view the live 6-stage visual tracking timeline (`app/orders/[id]`). | Completed in < 15 seconds |
-| **Task 5** | POS / Cashier | Open the POS terminal (`/admin/pos`) and scan/search a product by SKU (e.g., `GRO-001`). | Completed in < 5 seconds |
-| **Task 6** | POS / Cashier | Apply a ₹15 flat discount, enter cash received amount, and calculate exact change due. | Completed without error |
-| **Task 7** | POS / Cashier | Complete POS checkout and trigger the 1-click printable Tax Invoice modal. | Completed in < 10 seconds |
-| **Task 8** | Manager / Inventory | Adjust product stock (+10 units) in Inventory Management (`/admin/inventory`) with an audit reason. | Completed in < 20 seconds |
-| **Task 9** | Manager / Analytics | Open Sales Reports (`/admin/reports`), view Product Profitability, and download the CSV report. | Completed in < 15 seconds |
+## Session form — duplicate for each real participant
 
----
+| Field | Entry |
+|---|---|
+| Session ID / participant code / role | Not recorded. |
+| Actual date, device, build and moderator | Not recorded. |
+| Consent scope / record reference | Not recorded. |
+| Tasks attempted | Not recorded. |
+| Outcome per task | Not assessed: independent / assisted / failed / not attempted. |
+| Measured seconds and timing definition | Not measured. |
+| Directly observed difficulty, error and moderator help | Not recorded. |
+| Genuine quote, or clearly labelled paraphrase | Not recorded. |
+| Participant's desired improvement | Not recorded. |
+| Severity and rationale assigned by researcher | Not assessed. |
+| Proposed action / implemented change / retest link | Pending. |
 
-## 3. Tester Validation Reports (3 Required Participants)
+Use participant codes rather than invented names or ages. A moderator's note must not be formatted as the participant's exact speech.
 
-### 3.1 Tester 1 Validation Report: Customer Role
-`[TO BE COMPLETED AFTER REAL USER TESTING]`  
-`[EXAMPLE ONLY — REPLACE WITH REAL TESTER FEEDBACK]`
+## Metrics
 
-| Evaluation Metric | Field Data Collection Entry |
-|-------------------|-----------------------------|
-| **Tester Name / ID** | *[Insert Real Tester 1 Name / ID]* |
-| **User Role** | Local Household Customer |
-| **Age Range** | 25 – 40 years |
-| **Digital Familiarity** | Moderate (Uses WhatsApp, UPI apps, basic online shopping) |
-| **Test Scenario** | *"You want to order 2 packs of wheat flour and tea from Sri Chamundi Stores for evening delivery."* |
-| **Tasks Attempted** | Tasks 1, 2, 3, 4 |
-| **Task Completion Rate** | *[e.g., 4 / 4 Tasks Completed]* |
-| **Observed Friction / Problems** | *[Describe exact user struggles, e.g., "Tester hesitated at payment step wanting COD option."]* |
-| **Verbatim Quotes** | `"[Insert exact quote spoken by Tester 1 during testing]"` |
-| **Issue Severity** | *[Low / Medium / High / Critical]* |
-| **Recommended Improvement** | *[Record requested design change]* |
-| **Implementation Status** | *[Implemented / Pending]* |
-| **Retest Result** | *[Pass / Fail / Pending]* |
+Independent task completion = independently completed attempted tasks / all attempted tasks. Report assisted and failed tasks separately. Exclude not-attempted tasks from this denominator and state the resulting counts. Report time only for measured tasks with a consistent start/end definition. Do not generalize a small convenience sample to all customers.
 
----
+A before/after time-saving claim requires comparable tasks, actual baseline measurements, post-change measurements and a clear calculation. No such data is included here.
 
-### 3.2 Tester 2 Validation Report: Cashier / Staff Role
-`[TO BE COMPLETED AFTER REAL USER TESTING]`  
-`[EXAMPLE ONLY — REPLACE WITH REAL TESTER FEEDBACK]`
+## Current results
 
-| Evaluation Metric | Field Data Collection Entry |
-|-------------------|-----------------------------|
-| **Tester Name / ID** | *[Insert Real Tester 2 Name / ID]* |
-| **User Role** | Counter Staff / POS Cashier |
-| **Age Range** | 20 – 35 years |
-| **Digital Familiarity** | Basic to Moderate (Uses smartphone, physical store register) |
-| **Test Scenario** | *"A customer at the counter is buying 3 packets of biscuits and paying ₹200 cash. Ring them up fast."* |
-| **Tasks Attempted** | Tasks 5, 6, 7 |
-| **Task Completion Rate** | *[e.g., 3 / 3 Tasks Completed]* |
-| **Observed Friction / Problems** | *[Describe exact cashier struggles, e.g., "Cashier looked for clear 'Print Invoice' button position."]* |
-| **Verbatim Quotes** | `"[Insert exact quote spoken by Tester 2 during testing]"` |
-| **Issue Severity** | *[Low / Medium / High / Critical]* |
-| **Recommended Improvement** | *[Record requested design change]* |
-| **Implementation Status** | *[Implemented / Pending]* |
-| **Retest Result** | *[Pass / Fail / Pending]* |
+| Measure | Current status |
+|---|---|
+| Completed real tester records | 0 recorded in this corrected dossier. |
+| Independent or assisted success rate | Not measured. |
+| Mean/median task time | Not measured. |
+| Implemented and retested user-driven improvements | None evidenced. |
 
----
-
-### 3.3 Tester 3 Validation Report: Store Owner Role
-`[TO BE COMPLETED AFTER REAL USER TESTING]`  
-`[EXAMPLE ONLY — REPLACE WITH REAL TESTER FEEDBACK]`
-
-| Evaluation Metric | Field Data Collection Entry |
-|-------------------|-----------------------------|
-| **Tester Name / ID** | *[Insert Real Tester 3 Name / ID]* |
-| **User Role** | Store Owner / Business Manager |
-| **Age Range** | 40 – 60 years |
-| **Digital Familiarity** | Basic (Prefers clear text, simple buttons, avoiding complex menus) |
-| **Test Scenario** | *"Check today's sales revenue, adjust stock for 5 damaged tea packets, and export the profit report."* |
-| **Tasks Attempted** | Tasks 8, 9 |
-| **Task Completion Rate** | *[e.g., 2 / 2 Tasks Completed]* |
-| **Observed Friction / Problems** | *[Describe exact owner struggles, e.g., "Owner wanted gross profit displayed in large font."]* |
-| **Verbatim Quotes** | `"[Insert exact quote spoken by Tester 3 during testing]"` |
-| **Issue Severity** | *[Low / Medium / High / Critical]* |
-| **Recommended Improvement** | *[Record requested design change]* |
-| **Implementation Status** | *[Implemented / Pending]* |
-| **Retest Result** | *[Pass / Fail / Pending]* |
-
----
-
-## 4. Usability Metric Summary Matrix
-
-Once testing with all 3 real users is finished, summarize results in this matrix:
-
-| Task ID & Description | Tester 1 (Customer) | Tester 2 (Cashier) | Tester 3 (Owner) | Overall Task Completion % | Average Time to Complete |
-|-----------------------|--------------------|-------------------|------------------|---------------------------|--------------------------|
-| **T1: Product Search** | *[Pass/Fail]* | *[N/A]* | *[N/A]* | *[TBD]* | *[TBD sec]* |
-| **T2: Add to Cart & Stock Check** | *[Pass/Fail]* | *[N/A]* | *[N/A]* | *[TBD]* | *[TBD sec]* |
-| **T3: Multi-Step Checkout** | *[Pass/Fail]* | *[N/A]* | *[N/A]* | *[TBD]* | *[TBD sec]* |
-| **T4: Order Tracking** | *[Pass/Fail]* | *[N/A]* | *[N/A]* | *[TBD]* | *[TBD sec]* |
-| **T5: POS Barcode SKU Search** | *[N/A]* | *[Pass/Fail]* | *[N/A]* | *[TBD]* | *[TBD sec]* |
-| **T6: Discount & Cash Change** | *[N/A]* | *[Pass/Fail]* | *[N/A]* | *[TBD]* | *[TBD sec]* |
-| **T7: Print Invoice** | *[N/A]* | *[Pass/Fail]* | *[N/A]* | *[TBD]* | *[TBD sec]* |
-| **T8: Inventory Adjustment** | *[N/A]* | *[N/A]* | *[Pass/Fail]* | *[TBD]* | *[TBD sec]* |
-| **T9: Profit Report & CSV Export** | *[N/A]* | *[N/A]* | *[Pass/Fail]* | *[TBD]* | *[TBD sec]* |
+After actual testing, add redacted session files under `docs/evidence/`, update the [change log](07-feedback-change-log.md) and the summary in `data/project-review.json`. A filled template is not sufficient unless its contents describe a real, traceable activity.

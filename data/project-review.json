@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "project": "Sri Chamundi Stores & Tea Stall",
+  "title": "Retail Billing, Inventory & Online Ordering Prototype",
+  "revisionDate": "2026-10-06",
+  "baselineCommit": "1070d38646d2f190cfa229eb15e6b103ba45adee",
+  "reportStatus": "Documentation consistency repaired; real-user evidence and runtime verification pending",
+  "problemStatement": "Staff and customers need an understandable way to complete retail purchases and check availability and order progress. Whether current information gaps and repeated manual steps create avoidable effort remains to be investigated.",
+  "hmw": "How might we help customers and staff at Sri Chamundi Stores complete purchases with less waiting and less uncertainty about product availability and order progress?",
+  "pathway": {
+    "selected": null,
+    "confirmedOn": null,
+    "evidenceRef": null
+  },
+  "participants": [],
+  "interviews": [],
+  "observations": [],
+  "aiSessions": [
+    {
+      "id": "AI-REV-20261006",
+      "date": "2026-10-06",
+      "evidenceRef": "docs/evidence/ai-revision-2026-10-06.md",
+      "kind": "current_revision",
+      "alternatives": [
+        "Paper-based stock and billing checklist",
+        "Message-based ordering",
+        "Standalone offline POS",
+        "Third-party ordering or delivery platform",
+        "Integrated web POS and storefront"
+      ],
+      "humanDecision": null
+    }
+  ],
+  "tests": [],
+  "changes": [],
+  "technicalVerification": {
+    "buildStatus": "not_run",
+    "buildRef": null,
+    "evidenceRef": null,
+    "demoEvidenceRef": null
+  },
+  "assessment": {
+    "review1Marks": 30.1,
+    "review1Maximum": 35,
+    "source": "Student-supplied RAale screenshots, 6 October 2026; not independently re-fetched from the portal.",
+    "review2Milestone": "Review 2 — portal label: 35% project completion. This is a milestone label, not a measured completion claim."
+  },
+  "alternatives": [
+    {
+      "id": "ALT-01",
+      "name": "Paper-based stock and billing checklist",
+      "benefit": "Could improve consistency without requiring customers to use a new application.",
+      "limitation": "Staff would still have to record and reconcile changes manually.",
+      "test": "Observe whether a clearer checklist reduces repeated checks without extra work.",
+      "status": "Alternative to evaluate"
+    },
+    {
+      "id": "ALT-02",
+      "name": "Message-based ordering",
+      "benefit": "Could allow assisted ordering through a communication channel already used by participants.",
+      "limitation": "Availability checks, confirmations and stock updates may still require staff intervention.",
+      "test": "Ask which channels people actually use; observe staff effort per order.",
+      "status": "Alternative to evaluate"
+    },
+    {
+      "id": "ALT-03",
+      "name": "Standalone offline POS",
+      "benefit": "Could focus on counter billing without requiring an online customer account.",
+      "limitation": "Remote stock visibility would need a separate integration or process.",
+      "test": "Compare cashier task completion and recovery from mistakes with the current workflow.",
+      "status": "Alternative to evaluate"
+    },
+    {
+      "id": "ALT-04",
+      "name": "Third-party ordering or delivery platform",
+      "benefit": "Could reuse external ordering or delivery capabilities rather than building every feature.",
+      "limitation": "Fees, eligibility, data access and integrations need provider-specific verification. No fixed commission is assumed.",
+      "test": "Check actual terms and whether the store and its customers need the service.",
+      "status": "Alternative to evaluate"
+    },
+    {
+      "id": "ALT-05",
+      "name": "Integrated web POS and storefront",
+      "benefit": "The existing prototype shares retail data across staff and customer interfaces.",
+      "limitation": "Requires staff adoption, reliable records, authorization checks, maintenance and end-to-end transaction tests.",
+      "test": "Evaluate the existing prototype with real participants and compare it with a simpler intervention.",
+      "status": "Existing prototype; not user-validated"
+    }
+  ]
+}
